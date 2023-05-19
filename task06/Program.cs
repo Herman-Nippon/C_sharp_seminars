@@ -7,7 +7,7 @@ Console.Write("Enter a number: ");
 int num = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine($"Is the number {num} even?");
 
-if (Convert.ToBoolean(num % 2))
+if (Convert.ToBoolean(num % 2)) //if the remainder is 1 (or -1) -> the expr becomes true
 {
     Console.WriteLine($"No, the number {num} is odd.");
 }
