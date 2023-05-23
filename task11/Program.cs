@@ -14,6 +14,6 @@ int DeleteSecondDigit(int num)
 
 int number = new Random().Next(100, 1000);
 
-Console.WriteLine($"Трёхзначное число - {number}");
+Console.WriteLine($"Three-digit number - {number}");
 int deleteSecondDigit = DeleteSecondDigit(number);
-Console.WriteLine($"Число без второй цифры - {deleteSecondDigit}");
+Console.WriteLine($"The number without the second digit - {deleteSecondDigit}");
