@@ -5,15 +5,6 @@
 // 12-> 2
 // 85 -> 8
 
-// void PrintArray(int[] array)
-// {
-//     foreach (int i in array)
-//     {
-//         Console.Write(i + " ");
-//     }
-//     Console.WriteLine();
-// }
-
 int number = new Random().Next(10, 100);
 int[] digits = new int[2] { number % 10, (number / 10)};
 
