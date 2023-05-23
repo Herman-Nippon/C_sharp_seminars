@@ -5,7 +5,7 @@
 
 int GetThirdDigit(int num)
 {
-    while (num / 1000 > 0)
+    while (num > 999)
     {
         num /= 10;
     }
