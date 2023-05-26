@@ -7,7 +7,7 @@
 
 int GetInput(int number)
 {
-    string str = (number == 1 ? "first" : "second");
+    string str = (number == 1 ? "X" : "Y");
     Console.Write($"Enter the {str} value: ");
     return Convert.ToInt32(Console.ReadLine());
 }
@@ -22,10 +22,10 @@ double GetDifference(int xA, int yA, int xB, int yB)
     return Math.Sqrt(Power(xA - xB) + Power(yA - yB));
 }
 
-Console.WriteLine("Enter the coordinates of the first point: ");
+Console.WriteLine("Enter the coordinates of the first point");
 int xA = GetInput(1);
 int yA = GetInput(2);
-Console.Write("Enter the coordinates of the second point: ");
+Console.WriteLine("Enter the coordinates of the second point: ");
 int xB = GetInput(1);
 int yB = GetInput(2);
 
