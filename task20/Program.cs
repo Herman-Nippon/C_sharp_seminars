@@ -12,14 +12,14 @@ int GetInput(int number)
     return Convert.ToInt32(Console.ReadLine());
 }
 
-int Power(int num)
+int Sqare(int num)
 {
     return num * num;
 }
 
 double GetDifference(int xA, int yA, int xB, int yB)
 {
-    return Math.Sqrt(Power(xA - xB) + Power(yA - yB));
+    return Math.Sqrt(Sqare(xA - xB) + Sqare(yA - yB));
 }
 
 Console.WriteLine("Enter the coordinates of the first point");
