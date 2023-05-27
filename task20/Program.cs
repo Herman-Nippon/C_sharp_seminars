@@ -25,7 +25,7 @@ double GetDifference(int xA, int yA, int xB, int yB)
 Console.WriteLine("Enter the coordinates of the first point");
 int xA = GetInput(1);
 int yA = GetInput(2);
-Console.WriteLine("Enter the coordinates of the second point: ");
+Console.WriteLine("Enter the coordinates of the second point");
 int xB = GetInput(1);
 int yB = GetInput(2);
 
