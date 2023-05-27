@@ -12,14 +12,14 @@ int GetInput(int number)
     return Convert.ToInt32(Console.ReadLine());
 }
 
-int Sqare(int num)
+int Square(int num)
 {
     return num * num;
 }
 
-double GetDifference(int xA, int yA, int xB, int yB)
+double GetDistanceBetweenPoints(int xA, int yA, int xB, int yB)
 {
-    return Math.Sqrt(Sqare(xA - xB) + Sqare(yA - yB));
+    return Math.Sqrt(Square(xA - xB) + Square(yA - yB));
 }
 
 Console.WriteLine("Enter the coordinates of the first point");
@@ -29,5 +29,5 @@ Console.WriteLine("Enter the coordinates of the second point");
 int xB = GetInput(1);
 int yB = GetInput(2);
 
-double result = Math.Round(GetDifference(xA, yA, xB, yB), 2, MidpointRounding.ToZero);
+double result = Math.Round(GetDistanceBetweenPoints(xA, yA, xB, yB), 2, MidpointRounding.ToZero);
 Console.WriteLine($"The distance between two points is: {result}");
