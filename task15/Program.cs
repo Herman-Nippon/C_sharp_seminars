@@ -3,17 +3,12 @@
 // 7 -> да
 // 1 -> нет
 
-bool IsWeekend(int number)
-{
-    return (number >= 6 ? true : false);
-}
-
 Console.Write("Enter a digit, corresponding to a day of the week: ");
 int number = Convert.ToInt32(Console.ReadLine());
 
 if (number >= 1 && number <= 7)
 {
-    Console.WriteLine(IsWeekend(number) ? "Yes, it is weekend." : "No, it is not a weekend.");
+    Console.WriteLine((number >= 6) ? "Yes, it is weekend." : "No, it is not a weekend.");
 }
 else
 {
