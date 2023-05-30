@@ -3,22 +3,10 @@
     int digits = 0;
 
     if (num == 0) return 1;
-    else if (num > 0)
+    while (num != 0)
     {
-        while (num > 0)
-        {
-            digits++;
-            num /= 10;
-        }
-        
-    }
-    else if (num < 0)
-    {
-        while (num < 0)
-        {
-            digits++;
-            num /= 10;
-        }
+        digits++;
+        num /= 10;
     }
     return digits;
 }
