@@ -14,8 +14,7 @@ int GetNumber()
 
 bool SuchTriangleExists(int a, int b, int c)
 {
-    if ((a < b + c) && (b < a + c) && (c < a + b)) return true;
-    else return false;
+    return (a < b + c) && (b < a + c) && (c < a + b);
 }
 
 int side1 = GetNumber();
