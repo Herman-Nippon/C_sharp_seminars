@@ -15,6 +15,12 @@ void GetintersectionPoint(double k1, double b1, double k2, double b2)
 {
     if (k1 == k2)
     {
+        if (b1 == b2)
+        {
+            Console.WriteLine("The lines are identical");
+            return;
+        }
+        
         Console.WriteLine("The lines are parallel");
         return;
     }
