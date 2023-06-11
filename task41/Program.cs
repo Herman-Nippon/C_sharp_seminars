@@ -4,7 +4,7 @@
 
 int GetNumber()
 {
-    Console.Write("Enter a natural number: ");
+    Console.Write("How many numbers do you want to enter: ");
     int number = Convert.ToInt32(Console.ReadLine());
     return number;
 }
@@ -12,9 +12,14 @@ int GetNumber()
 int[] NumbersInput(int num)
 {
     int[] arr = new int[num];
-    for (int i = 0; i < num; i++)
+    int i = 0;
+    while (i < num)
     {
-        arr[i] = Convert.ToInt32(Console.ReadLine());
+        Console.Write($"Enter {i+1} number: ");
+        string value = Console.ReadLine()!;
+
+        if (int.TryParse(value, out int intValue)) arr[i++] = intValue;
+        else Console.WriteLine("You haven't entered a whole number! Try again.");
     }
     return arr;
 }
