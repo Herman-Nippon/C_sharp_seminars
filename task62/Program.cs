@@ -5,45 +5,38 @@
 // 11 16 15 06
 // 10 09 08 07
 
+bool CheckUnfinished(int num, int rows, int cols)
+{
+    return num <= rows * cols;
+}
+
 void FillMatrixSpirally(int[,] matr, int rows, int cols)
 {
     int rowStart = 0, rowEnd = rows - 1, colStart = 0, colEnd = cols - 1, num = 1;
 
-    if (rows == 1) // special case with one row
-    {
-        for (int i = colStart; i <= colEnd; i++)
-        {
-            matr[rowStart, i] = num++;
-        }
-        return;
-    }
-
-    if (cols == 1) // special case with one column
-    {
-        for (int i = rowStart; i <= rowEnd; i++)
-        {
-            matr[i, colStart] = num++;
-        }
-        return;
-    }
-
-    while (num <= rows * cols) // general case
+    while (CheckUnfinished(num, rows, cols))
     {
         for (int i = colStart; i <= colEnd; i++)
         {
             matr[rowStart, i] = num++;
         }
         rowStart++;
+        if (!CheckUnfinished(num, rows, cols)) break;
+        
         for (int i = rowStart; i <= rowEnd; i++)
         {
             matr[i, colEnd] = num++;
         }
         colEnd--;
+        if (!CheckUnfinished(num, rows, cols)) break;
+
         for (int i = colEnd; i >= colStart; i--)
         {
             matr[rowEnd, i] = num++;
         }
         rowEnd--;
+        if (!CheckUnfinished(num, rows, cols)) break;
+
         for (int i = rowEnd; i >= rowStart; i--)
         {
             matr[i, colStart] = num++;
@@ -64,40 +57,35 @@ void PrintMatrix(int[,] matr)
     }
 }
 
-int[] ConsoleGetInput(string[] prompts)
+int GetIntegerFromUser(string prompt)
 {
-    int[] values = new int[prompts.Length];
-    for (int i = 0; i < prompts.Length; i++)
+    int intValue;
+    bool isValidNumber;
+
+    do
     {
-        Console.Write(prompts[i] + ": ");
-        string input = Console.ReadLine()!;
-        if (int.TryParse(input, out int intValue))
-            values[i] = intValue;
-        else
-            return null!;
-    }
-    return values;
+        Console.Write(prompt);
+        isValidNumber = int.TryParse(Console.ReadLine(), out intValue);
+
+        if (!isValidNumber) Console.WriteLine("Invalid input. Please, enter an integer.");
+    } while (!isValidNumber);
+
+    return intValue;
 }
 
-string[] strPrompts = new string[]{"Rows", "Columns"};
-int[] input = ConsoleGetInput(strPrompts);
+int numberRows = GetIntegerFromUser("Rows: ");
+int numberColumns = GetIntegerFromUser("Columns: ");
 
-if (input == null)
-{
-    Console.WriteLine("Incorrect input, you must enter integers");
-    return;
-}
-else if (input[0] < 1 || input[1] < 1)
+if (numberRows < 1 || numberColumns < 1)
 {
     Console.WriteLine("Incorrect input, rows and columns numbers must be greater than 0");
     return;
 }
 
-int numberRows = input[0], numberColumns = input[1];
-
 int[,] matrix = new int[numberRows, numberColumns];
 
 FillMatrixSpirally(matrix, numberRows, numberColumns);
+Console.WriteLine();
 PrintMatrix(matrix);
 
 
