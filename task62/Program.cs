@@ -82,6 +82,17 @@ int[] ConsoleGetInput(string[] prompts)
 string[] strPrompts = new string[]{"Rows", "Columns"};
 int[] input = ConsoleGetInput(strPrompts);
 
+if (input == null)
+{
+    Console.WriteLine("Incorrect input, you must enter integers");
+    return;
+}
+else if (input[0] < 1 || input[1] < 1)
+{
+    Console.WriteLine("Incorrect input, rows and columns numbers must be greater than 0");
+    return;
+}
+
 int numberRows = input[0], numberColumns = input[1];
 
 int[,] matrix = new int[numberRows, numberColumns];
