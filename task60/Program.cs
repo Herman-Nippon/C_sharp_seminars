@@ -54,12 +54,10 @@ void Fill3dArrayRandom(int[,,] arr, int startNumber, int endNumber)
                 int randomValueIndex = rnd.Next(endIndex + 1); // generate random index
                 arr[i, j, k] = uniqueNumbers[randomValueIndex]; // pick a unique number with the random index
 
-                // put the picked number in the end of the array of unique numbers
-                int temp = uniqueNumbers[endIndex];
-                uniqueNumbers[endIndex] = uniqueNumbers[randomValueIndex];
-                uniqueNumbers[randomValueIndex] = temp; 
+                // remove the picked number from the array of unique numbers
+                uniqueNumbers[randomValueIndex] = uniqueNumbers[endIndex]; 
 
-                endIndex--; // restrict access to already used number
+                endIndex--; // restrict access to the duplicate
             }
         }
     }
