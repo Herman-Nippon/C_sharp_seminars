@@ -8,7 +8,26 @@
 void FillMatrixSpirally(int[,] matr, int rows, int cols)
 {
     int rowStart = 0, rowEnd = rows - 1, colStart = 0, colEnd = cols - 1, num = 1;
-    while (num < rows * cols)
+
+    if (rows == 1) // special case with one row
+    {
+        for (int i = colStart; i <= colEnd; i++)
+        {
+            matr[rowStart, i] = num++;
+        }
+        return;
+    }
+
+    if (cols == 1) // special case with one column
+    {
+        for (int i = rowStart; i <= rowEnd; i++)
+        {
+            matr[i, colStart] = num++;
+        }
+        return;
+    }
+
+    while (num <= rows * cols) // general case
     {
         for (int i = colStart; i <= colEnd; i++)
         {
@@ -45,11 +64,29 @@ void PrintMatrix(int[,] matr)
     }
 }
 
-int dimensions_r = 8, dimensions_c = 2;
+int[] ConsoleGetInput(string[] prompts)
+{
+    int[] values = new int[prompts.Length];
+    for (int i = 0; i < prompts.Length; i++)
+    {
+        Console.Write(prompts[i] + ": ");
+        string input = Console.ReadLine()!;
+        if (int.TryParse(input, out int intValue))
+            values[i] = intValue;
+        else
+            return null!;
+    }
+    return values;
+}
 
-int[,] matrix = new int[dimensions_r, dimensions_c];
+string[] strPrompts = new string[]{"Rows", "Columns"};
+int[] input = ConsoleGetInput(strPrompts);
 
-FillMatrixSpirally(matrix, dimensions_r, dimensions_c);
+int numberRows = input[0], numberColumns = input[1];
+
+int[,] matrix = new int[numberRows, numberColumns];
+
+FillMatrixSpirally(matrix, numberRows, numberColumns);
 PrintMatrix(matrix);
 
 
