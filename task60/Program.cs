@@ -6,19 +6,20 @@
 // 34(1,0,0) 41(1,1,0) 26(1,0,1) 55(1,1,1)
 
 
-int[] ConsoleGetInput(string[] prompts)
+int GetIntegerFromUser(string prompt)
 {
-    int[] values = new int[prompts.Length];
-    for (int i = 0; i < prompts.Length; i++)
+    int intValue;
+    bool isValidNumber;
+
+    do
     {
-        Console.Write(prompts[i] + ": ");
-        string input = Console.ReadLine()!;
-        if (int.TryParse(input, out int intValue))
-            values[i] = intValue;
-        else
-            return null!;
-    }
-    return values;
+        Console.Write(prompt);
+        isValidNumber = int.TryParse(Console.ReadLine(), out intValue);
+
+        if (!isValidNumber) Console.WriteLine("Invalid input. Please, enter an integer.");
+    } while (!isValidNumber);
+
+    return intValue;
 }
 
 void Print3dArray(int[,,] arr, int third_dim)
@@ -80,16 +81,11 @@ bool IsUniqueArray(int[,,] arr)
     return true;
 }
 
-string[] strPrompts = new string[]{"Rows", "Columns", "Depth", "Min value", "Max value"};
-int[] input = ConsoleGetInput(strPrompts);
-
-if (input == null)
-{
-    Console.WriteLine("Incorrect input, you must provide integer numbers");
-    return;
-}
-
-int rows = input[0], columns = input[1], depth = input[2], lowerBound = input[3], upperBound = input[4];
+int rows = GetIntegerFromUser("Rows: ");
+int columns = GetIntegerFromUser("Columns: ");
+int depth = GetIntegerFromUser("Depth: ");
+int lowerBound = GetIntegerFromUser("Min number: ");
+int upperBound = GetIntegerFromUser("Max number: ");
 
 if (rows < 1 || columns < 1 || depth < 1)
 {
